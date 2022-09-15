@@ -1,6 +1,6 @@
 <template layout="default">
-    <form @submit.prevent="submit" class="max-w-md mx-auto mt-8">
-        <div class="flex">
+    <form @submit.prevent="submit" class="mx-auto mt-8">
+        <div class="flex w-80">
             <div class="mb-6">
                 <label
                     class="block mb-2 font-bold text-xs text-gray-700"
@@ -9,7 +9,7 @@
                 >
                 <input
                     v-model="form.nth"
-                    class="border border-gray-400 p-2 w-full"
+                    class="border border-gray-400 p-2 w-24"
                     type="number"
                     name="nth"
                     min="0"
@@ -44,16 +44,11 @@
             <div class="flex-1">
                 <div class="text-lg bold" v-if="props.ans">Answer: {{ props.ans.fn }}</div>
             </div>
-            <button
-                type="submit"
-                class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500"
-            >
-                Submit
-            </button>
         </div>
         <div class="flex-1">
+            <div v-bind:hidden="!form.isSeq">
             <table
-                v-if="form.isSeq"
+                
                 class="min-w-full divide-y divide-gray-200"
             >
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -107,6 +102,7 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
         </div>
         <div v-if="props.ov">
             {{ props.ov }}
