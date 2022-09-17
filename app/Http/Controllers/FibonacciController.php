@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\CustomClasses\Fibonacci;
+use App\CustomClasses\GoldenRatio;
+use App\CustomClasses\SequenceMethod;
 use OverflowException;
 
 class FibonacciController extends Controller
@@ -16,10 +17,11 @@ class FibonacciController extends Controller
     {
         $form = request()->validate([
             'nth' => ['required', 'integer', 'Numeric'],
-            'isSeq' => []
+            'isSeq' => [],
+            'formula' => [],
         ]);
         try{
-            $f = new Fibonacci($form);
+            $f = $form["formula"] == 'seq' ? new SequenceMethod($form) : new GoldenRatio($form);
 
             // Should format in a resource
             return inertia('fibonacci', 
