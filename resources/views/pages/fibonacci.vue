@@ -15,7 +15,7 @@
                     @change="submit"
                 >
                     <option selected value="seq">Sequence</option>
-                    <option value="golden">Golden Ration</option>
+                    <option value="golden">Golden Ratio</option>
                 </select>
             </div>
         </div>
